@@ -359,7 +359,7 @@ void print_file_separator(void) {
 }
 
 const char *normalize_path(const char *path) {
-    if (strlen(path) < 3) {
+    if (opts.print_origin || strlen(path) < 3) {
         return path;
     }
     if (path[0] == '.' && path[1] == '/') {

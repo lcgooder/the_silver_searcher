@@ -67,6 +67,7 @@ Output Options:\n\
                           don't contain matches\n\
      --[no]numbers        Print line numbers. Default is to omit line numbers\n\
                           when searching streams\n\
+     --print-origin       Print origin filenames without normalizing\n\
   -o --only-matching      Prints only the matching part of the lines\n\
      --print-long-lines   Print matches on very long lines (Default: >2k characters)\n\
      --passthrough        When searching a stream, print all lines even if they\n\
@@ -162,6 +163,7 @@ void init_options(void) {
     opts.print_path = PATH_PRINT_DEFAULT;
     opts.print_all_paths = FALSE;
     opts.print_line_numbers = TRUE;
+    opts.print_origin = FALSE;
     opts.recurse_dirs = TRUE;
     opts.color_path = ag_strdup(color_path);
     opts.color_match = ag_strdup(color_match);
@@ -310,6 +312,7 @@ void parse_options(int argc, char **argv, char **base_paths[], char **paths[]) {
         { "print0", no_argument, NULL, '0' },
         { "print-all-files", no_argument, NULL, 0 },
         { "print-long-lines", no_argument, &opts.print_long_lines, 1 },
+        { "print-origin", no_argument, &opts.print_origin, TRUE },
         { "recurse", no_argument, NULL, 'r' },
         { "search-binary", no_argument, &opts.search_binary_files, 1 },
         { "search-files", no_argument, &opts.search_stream, 0 },
