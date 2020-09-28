@@ -567,10 +567,6 @@ void search_dir(ignores *ig, const char *base_path, const char *path, const int 
         if (errno == ENOTDIR) {
             /* Not a directory. Probably a file. */
             if (depth == 0 && opts.paths_len == 1) {
-                /* If we're only searching one file, don't print the filename header at the top. */
-                if (opts.print_path == PATH_PRINT_DEFAULT || opts.print_path == PATH_PRINT_DEFAULT_EACH_LINE) {
-                    opts.print_path = PATH_PRINT_NOTHING;
-                }
                 /* If we're only searching one file and --only-matching is specified, disable line numbers too. */
                 if (opts.only_matching && opts.print_path == PATH_PRINT_NOTHING) {
                     opts.print_line_numbers = FALSE;
